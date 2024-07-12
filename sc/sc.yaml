@@ -1,0 +1,21 @@
+module: ""
+language: "java"
+importPathSeparator: "."
+enableFileCapitalization: true
+forceUnitSetupRegeneration: true
+ctlDir: "src/controller"
+templates:
+- dir: "sc/templates"
+imports:
+- repoOwner: "SoenkeD"
+  repoName: "sc-java-templates"
+  repoPath: "sc/templates/"
+  localPath: "sc/templates/"
+exports:
+- controller: "templates"
+  items:
+    - src: "controller/*"
+      to: "sc/templates/controller"
+      excluded:
+        - Ctl.java
+        - Reconciler.java
