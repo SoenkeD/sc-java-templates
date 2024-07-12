@@ -24,7 +24,7 @@ imports:
 ```
 @startuml Demo
 
-[*] --> DemoState: [ !CheckAlwaysTrue ]
+[*] --> DemoState: [ CheckAlwaysTrue ]
 [*] -[bold]-> [*]: / Print(The guards needs to be implemented)
 
 DemoState: do / AddMsg(Hello)
@@ -45,6 +45,10 @@ sc=~/go/bin/sc
 .PHONY: sc
 sc:
 	$(sc) gen --root $(PWD) --name myctl
+
+.PHONY: import
+import:
+	$(sc) import --root $(PWD)
 
 .PHONY: export
 export:
@@ -89,6 +93,7 @@ public class Main {
     }
 }
 ```
-7. Generate the state machine by running `make sc`
-8. Execute your first running state machine with `make exec`
+7. Import the base templates `make import`
+8. Generate the state machine by running `make sc`
 9. Implement at least the Print action in `src/controller/myctl/actions/Print.java`
+10. Execute your first running state machine with `make exec`
