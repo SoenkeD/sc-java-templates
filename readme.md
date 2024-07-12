@@ -9,6 +9,8 @@ importPathSeparator: "."
 enableFileCapitalization: true
 forceUnitSetupRegeneration: true
 ctlDir: "src/controller"
+templates:
+- dir: "sc/templates"
 imports:
 - repoOwner: "SoenkeD"
   repoName: "sc-java-templates"
@@ -22,9 +24,8 @@ imports:
 ```
 @startuml Demo
 
-[*] --> DemoState: [ CheckAlwaysTrue ]
-[*] -[dotted]-> [*]
-[*] -[bold]-> [*]
+[*] --> DemoState: [ !CheckAlwaysTrue ]
+[*] -[bold]-> [*]: / Print(The guards needs to be implemented)
 
 DemoState: do / AddMsg(Hello)
 DemoState: do / AddMsg(World1)
@@ -43,7 +44,7 @@ sc=~/go/bin/sc
 
 .PHONY: sc
 sc:
-	$(sc) gen --root $(PWD) --name templates
+	$(sc) gen --root $(PWD) --name myctl
 
 .PHONY: export
 export:
@@ -90,3 +91,4 @@ public class Main {
 ```
 7. Generate the state machine by running `make sc`
 8. Execute your first running state machine with `make exec`
+9. Implement at least the Print action in `src/controller/myctl/actions/Print.java`
